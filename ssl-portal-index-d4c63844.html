@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+    <title>世界足球赛事 · 稳定观赛入口 | 专题介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #f4f6f8;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 1.6rem 1.2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* 顶部横幅 Hero */
+        .hero {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 2.8rem 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+            border: 1px solid #e9edf2;
+            transition: box-shadow 0.2s ease;
+        }
+        .hero:hover {
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+        }
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #0f172a;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        .hero .subhead {
+            font-size: 1.1rem;
+            color: #475569;
+            max-width: 600px;
+            margin-bottom: 1.6rem;
+            font-weight: 400;
+            border-left: 3px solid #94a3b8;
+            padding-left: 1.2rem;
+        }
+        .hero .meta-badge {
+            display: inline-block;
+            font-size: 0.8rem;
+            background: #eef2f6;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            color: #334155;
+            border: 1px solid #dce1e8;
+        }
+
+        /* 背景说明卡片 */
+        .bg-card {
+            background: #ffffff;
+            border-radius: 22px;
+            padding: 2rem 2rem 1.8rem;
+            margin-bottom: 2.2rem;
+            border: 1px solid #e9edf2;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02);
+        }
+        .bg-card h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 1.2rem;
+            color: #1e293b;
+            display: flex;
+            align-items: center;
+        }
+        .bg-card h2 span {
+            background: #dbe4ed;
+            width: 6px;
+            height: 22px;
+            display: inline-block;
+            margin-right: 12px;
+            border-radius: 4px;
+        }
+        .bg-card p {
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+            color: #2c3e50;
+        }
+        .bg-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 三段式介绍卡片组 */
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.8rem;
+            margin-bottom: 2.5rem;
+        }
+        @media (min-width: 680px) {
+            .features-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.6rem;
+            }
+        }
+        .feature-card {
+            background: #ffffff;
+            border-radius: 22px;
+            padding: 1.8rem 1.6rem 2rem;
+            border: 1px solid #e6ebf1;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+            transition: box-shadow 0.2s, transform 0.1s;
+        }
+        .feature-card:hover {
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.05);
+            transform: translateY(-2px);
+        }
+        .feature-card .card-icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+            opacity: 0.7;
+        }
+        .feature-card h3 {
+            font-weight: 500;
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            color: #0f172a;
+            letter-spacing: -0.01em;
+        }
+        .feature-card p {
+            font-size: 0.95rem;
+            color: #3a4a5e;
+            margin-bottom: 0.5rem;
+        }
+        .feature-card .footnote {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-top: 0.8rem;
+            border-top: 1px solid #edf2f7;
+            padding-top: 0.7rem;
+        }
+
+        /* FAQ 摘要 / 说明片段 */
+        .faq-note {
+            background: #ffffff;
+            border-radius: 22px;
+            padding: 1.8rem 2rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid #e9edf2;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+        }
+        .faq-note h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 0.9rem;
+            color: #1e293b;
+        }
+        .faq-note details {
+            margin-bottom: 0.6rem;
+            border-bottom: 1px dashed #e2e8f0;
+            padding-bottom: 0.6rem;
+        }
+        .faq-note details:last-child {
+            border-bottom: none;
+        }
+        .faq-note summary {
+            font-weight: 500;
+            cursor: pointer;
+            color: #1e293b;
+            padding: 0.3rem 0;
+            font-size: 0.95rem;
+        }
+        .faq-note summary::-webkit-details-marker {
+            color: #8b9db0;
+        }
+        .faq-note details p {
+            font-size: 0.9rem;
+            color: #475569;
+            margin-top: 0.5rem;
+            padding-left: 0.3rem;
+        }
+
+        /* 页尾访问提示 */
+        .site-footer {
+            margin-top: 2rem;
+            padding: 1.8rem 2rem;
+            background: #ffffff;
+            border-radius: 22px;
+            border: 1px solid #e6ebf1;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            text-align: center;
+        }
+        .site-footer p {
+            font-size: 0.95rem;
+            color: #2d3c50;
+            margin-bottom: 0.6rem;
+        }
+        .site-footer .link-sentence {
+            background: #f1f5f9;
+            display: inline-block;
+            padding: 0.5rem 1.8rem;
+            border-radius: 60px;
+            font-size: 1rem;
+            border: 1px solid #dce2ea;
+            margin-top: 0.4rem;
+            transition: background 0.2s;
+        }
+        .site-footer .link-sentence:hover {
+            background: #e6edf5;
+        }
+        .site-footer a {
+            color: #1e3a5f;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+        }
+        .site-footer a:hover {
+            border-bottom-color: #1e3a5f;
+        }
+        .footer-meta {
+            font-size: 0.75rem;
+            color: #7e8a98;
+            margin-top: 0.8rem;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e2e8f0;
+            margin: 0.5rem 0 1.2rem;
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+            .hero {
+                padding: 2rem 1.2rem;
+            }
+            .bg-card, .faq-note, .site-footer {
+                padding: 1.6rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- Hero 区域：首页横幅 -->
+    <header class="hero">
+        <h1>⚽ 世界足球直播 · 稳定入口</h1>
+        <div class="subhead">从小组赛到决赛，一个长期维护的观赛通道，陪伴每一场关键对决。</div>
+        <div class="meta-badge">专题 · 观赛指南</div>
+    </header>
+
+    <!-- 背景说明卡片 -->
+    <section class="bg-card">
+        <h2><span></span>关于这个入口</h2>
+        <p>对于很多球迷来说，寻找一个持续稳定且页面干净的赛事直播入口并不容易。很多临时链接在赛程密集时失效，或者被广告和弹窗打断观赛体验。</p>
+        <p>我们注意到 <strong>ssl-portal-worldcup.com</strong> 这个站点已经维持了相对长的时间，页面结构简单，没有过多干扰。它的初衷就是提供一个直达赛场的路径，适合在比赛前快速进入。</p>
+        <p>当然，任何第三方链接都存在不确定性，但从近几个月的观察来看，它确实是目前值得收藏的一个备选。下面从几个方面具体说明它的特点。</p>
+    </section>
+
+    <!-- 三段自然介绍 (特点/场景) -->
+    <div class="features-grid">
+        <article class="feature-card">
+            <div class="card-icon">📡</div>
+            <h3>页面精简，加载轻量</h3>
+            <p>该页面没有复杂的动态模块，文字与画面分区直接。即使在网络一般的环境下，也能较快进入直播流选择界面，减少等待时间。</p>
+            <p class="footnote">适合赛前最后一分钟打开。</p>
+        </article>
+        <article class="feature-card">
+            <div class="card-icon">🔄</div>
+            <h3>多线路备选逻辑</h3>
+            <p>一般会提供至少两条不同来源的直播线路，当主线路波动时可以手动切换。虽然画面清晰度因源而异，但保证了“有球可看”的底线。</p>
+            <p class="footnote">遇到卡顿可尝试切换线路。</p>
+        </article>
+        <article class="feature-card">
+            <div class="card-icon">🧭</div>
+            <h3>相对低调的运营方式</h3>
+            <p>站点没有铺天盖地的弹窗广告，也没有诱导下载的按钮。它更像一个安静的导航页，只把直播链接放在那里，由你决定是否点开。</p>
+            <p class="footnote">这种克制在同类站中并不多见。</p>
+        </article>
+    </div>
+
+    <!-- FAQ 摘要 / 简短说明 -->
+    <section class="faq-note">
+        <h3>一些你可能想了解的</h3>
+        <details>
+            <summary>这个网站一直都能用吗？</summary>
+            <p>任何直播类网站都面临域名或服务器的不稳定性。但该站点已经稳定运行超过两个赛季，日常维护比较及时。建议收藏后定期回来看看。</p>
+        </details>
+        <details>
+            <summary>需要注册或付费吗？</summary>
+            <p>根据目前的访问情况，不需要注册，也没有收费提示。直接进入页面选择对应比赛即可加载直播。</p>
+        </details>
+        <details>
+            <summary>画质和延迟如何？</summary>
+            <p>受限于源站，画质多为 SD 到 HD 之间，延迟大约在 30–60 秒。对于实时观赛来说可接受，但如果是追求 4K 超低延迟，可能不太满足。</p>
+        </details>
+    </section>
+
+    <!-- 页尾访问提示 + 自然嵌入 a 标签 -->
+    <footer class="site-footer">
+        <p>如果你正在寻找一个界面简洁的观赛入口，不妨试试打开</p>
+        <div class="link-sentence">
+            <a href="https://ssl-portal-worldcup.com">世界杯直播</a>
+        </div>
+        <p style="margin-top: 0.8rem; font-size: 0.9rem;">—— 页面以纯信息方式呈现，无额外跳转。只需在赛前将链接留在浏览器标签栏即可。</p>
+        <hr>
+        <div class="footer-meta">
+            <span>杂志专题 · 稳定入口简述</span> &nbsp;—&nbsp; <span>内容仅供参考，请自行判断网站可用性</span>
+        </div>
+    </footer>
+
+</div>
+</body>
+</html>
