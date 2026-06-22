@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ng体育 · 持续关注的资讯出发点</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: #f8f6f2;
+      color: #1f2a38;
+      line-height: 1.7;
+    }
+
+    /* 深色头图 */
+    .hero {
+      background: linear-gradient(145deg, #0b1a2a 0%, #1b2e40 100%);
+      padding: 3.5rem 1.5rem 3rem;
+      text-align: center;
+      color: #e7ecf0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 40px;
+      background: #f8f6f2;
+      border-radius: 40px 40px 0 0;
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero h1 span {
+      color: #fbc96e;
+      font-weight: 600;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0.8rem auto 0;
+      opacity: 0.85;
+      font-weight: 300;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    /* 信息卡片布局 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin: 1.5rem 0 2.5rem;
+    }
+
+    @media (max-width: 700px) {
+      .card-grid {
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
+      }
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 1.8rem 1.8rem 2rem;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.02), 0 4px 12px rgba(0, 20, 30, 0.06);
+      transition: all 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 30px rgba(0, 20, 30, 0.08);
+    }
+
+    .card .icon {
+      font-size: 2rem;
+      margin-bottom: 0.3rem;
+      display: inline-block;
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #0b1a2a;
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.3px;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #3b4a5a;
+      margin-bottom: 0.2rem;
+    }
+
+    .card .tag {
+      display: inline-block;
+      margin-top: 0.8rem;
+      background: #f0ede7;
+      color: #1b2e40;
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* 适合人群模块 */
+    .audience-section {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 1.8rem 2rem 2rem;
+      margin: 2rem 0 2.8rem;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.02);
+    }
+
+    .audience-section h2 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #0b1a2a;
+      margin-bottom: 1rem;
+      border-left: 5px solid #fbc96e;
+      padding-left: 1rem;
+    }
+
+    .audience-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+    }
+
+    .audience-item {
+      background: #f8f6f2;
+      border-radius: 40px;
+      padding: 0.5rem 1.4rem;
+      font-size: 0.95rem;
+      color: #1f2a38;
+      font-weight: 450;
+    }
+
+    .audience-item strong {
+      color: #b97e3c;
+      font-weight: 600;
+    }
+
+    /* 自然链接段落 */
+    .link-paragraph {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 1.8rem 2rem 2rem;
+      margin: 2.2rem 0 1.5rem;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.02);
+    }
+
+    .link-paragraph h2 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #0b1a2a;
+      margin-bottom: 0.8rem;
+      border-left: 5px solid #fbc96e;
+      padding-left: 1rem;
+    }
+
+    .link-paragraph p {
+      font-size: 1rem;
+      color: #2c3d4e;
+      margin-bottom: 1.2rem;
+    }
+
+    .link-paragraph a {
+      color: #b97e3c;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .link-paragraph a:hover {
+      color: #8f5e28;
+      border-bottom-color: #fbc96e;
+    }
+
+    .link-paragraph .extra-note {
+      font-size: 0.9rem;
+      color: #5b6f7f;
+      background: #f4f1eb;
+      padding: 0.4rem 1rem;
+      border-radius: 30px;
+      display: inline-block;
+      margin-top: 0.2rem;
+    }
+
+    /* 小贴士 / FAQ 摘要 */
+    .tip-block {
+      background: #eae7df;
+      border-radius: 30px;
+      padding: 1.5rem 2rem;
+      margin: 2.5rem 0 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .tip-block .tip-text {
+      font-size: 0.95rem;
+      color: #1b2e40;
+      max-width: 70%;
+    }
+
+    .tip-block .tip-text strong {
+      color: #9d6a2e;
+    }
+
+    .tip-block .badge {
+      background: #0b1a2a;
+      color: #e7ecf0;
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    @media (max-width: 600px) {
+      .tip-block {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+      .tip-block .tip-text {
+        max-width: 100%;
+      }
+    }
+
+    /* 页脚 */
+    .footer-note {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #7f8d9b;
+      padding: 2.5rem 0 1rem;
+      border-top: 1px solid #e3ded6;
+      margin-top: 2rem;
+    }
+
+    .footer-note a {
+      color: #7f8d9b;
+      text-decoration: none;
+      border-bottom: 1px dotted #c2bdb3;
+    }
+
+    .footer-note a:hover {
+      color: #0b1a2a;
+      border-bottom-color: #0b1a2a;
+    }
+  </style>
+</head>
+<body>
+  <!-- 深色主视觉头图 -->
+  <header class="hero">
+    <h1>再次遇见 · <span>ng体育</span></h1>
+    <p>收藏一个安静的出发点，让感兴趣的内容自然回到视野里</p>
+  </header>
+
+  <main class="container">
+    <!-- 用途卡片区：主视觉延伸 -->
+    <div class="card-grid">
+      <div class="card">
+        <div class="icon">📇</div>
+        <h3>标记与回访</h3>
+        <p>把这里加入书签夹，或留在常用标签页。每次打开都是一次干净的开始，没有多余干扰。</p>
+        <span class="tag">常驻入口</span>
+      </div>
+      <div class="card">
+        <div class="icon">📋</div>
+        <h3>资讯汇集点</h3>
+        <p>从赛事动态到规则解读，内容围绕体育资讯展开，方便你按照自己的节奏浏览。</p>
+        <span class="tag">主题聚焦</span>
+      </div>
+      <div class="card">
+        <div class="icon">🔖</div>
+        <h3>收藏与跟进</h3>
+        <p>无论是移动端还是桌面端，收藏后即可随时回来。页面结构清晰，不至于在海量信息中迷失。</p>
+        <span class="tag">轻量体验</span>
+      </div>
+      <div class="card">
+        <div class="icon">📌</div>
+        <h3>持续关注</h3>
+        <p>适合想保持长期了解的用户。不必每天追赶推送，只需偶尔回来，就能跟上节奏。</p>
+        <span class="tag">低负担</span>
+      </div>
+    </div>
+
+    <!-- 适合人群模块 -->
+    <section class="audience-section">
+      <h2>适合这样的人群</h2>
+      <div class="audience-flex">
+        <span class="audience-item">🔹 对体育资讯有<strong>稳定兴趣</strong>的浏览者</span>
+        <span class="audience-item">🔹 希望<strong>减少信息过载</strong>、保留选择权的用户</span>
+        <span class="audience-item">🔹 喜欢用<strong>收藏夹</strong>管理常去站点的习惯派</span>
+        <span class="audience-item">🔹 偶尔回来看看，但不想被<strong>频繁打扰</strong>的人</span>
+      </div>
+    </section>
+
+    <!-- 自然链接段落（嵌入 a 标签，文本严格为「ng体育」） -->
+    <div class="link-paragraph">
+      <h2>从收藏到回访，只需一个位置</h2>
+      <p>
+        如果你之前来过这里，或者只是偶然看到，不妨将它放进书签栏。下次再有空档，直接打开就好。
+        很多朋友在持续关注<strong>体育动态</strong>时，会习惯性地回到 <a href="https://cn-m-ngsport.com">ng体育</a> 
+        看看有没有新的内容更新。这种方式不依赖推送，完全由自己掌控节奏。
+      </p>
+      <p>
+        没有复杂注册，也没有强行引导。只是给你一个干净的资讯落脚点，方便之后再次访问。
+        如果你觉得内容对胃口，随时可以把它留在常用标签里。
+      </p>
+      <span class="extra-note">📎 一个收藏，一次回访，就够了</span>
+    </div>
+
+    <!-- FAQ 摘要 / 小贴士风格区块 -->
+    <div class="tip-block">
+      <div class="tip-text">
+        <strong>💡 小提示：</strong> 将页面添加到浏览器书签或主屏幕，下次直接点击即可。不用搜索，不用记忆地址，适合长期保留。
+      </div>
+      <div class="badge">FAQ · 简洁即用</div>
+    </div>
+
+    <!-- 简短 FAQ 风格（自然收尾） -->
+    <div class="link-paragraph" style="margin-top: 1.5rem; background: #faf8f4;">
+      <h2>常见想法 · 简要回答</h2>
+      <p><strong>❓ 需要注册或登录吗？</strong><br>一般来说，浏览资讯无需注册。你可以直接通过收藏访问，没有额外门槛。</p>
+      <p><strong>❓ 这里的内容更新频率如何？</strong><br>内容保持自然的更新节奏，不会过度刷屏。适合隔段时间回来看一眼。</p>
+      <p style="margin-bottom: 0.2rem;">—— 如果还有更多问题，通过站内指引即可了解。</p>
+    </div>
+
+    <div class="footer-note">
+      <span>偶尔回访 · <a href="https://cn-m-ngsport.com">ng体育</a> · 保持简单的关注方式</span>
+    </div>
+  </main>
+</body>
+</html>
